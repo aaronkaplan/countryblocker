@@ -5,8 +5,12 @@ date=$(date --iso-8601)
 
 
 echo "making backup of iptables..."
+# you can always restore your rules via iptables-restore in case something goes wrong...
 iptables-save > backups/$date-iptables.save
 
+# note: you first have to have called ./fetch-ripe-assignments.sh
+# this creates the data/*.txt files with lists of CIDR ranges.
+# next, iterate over these:
 for cc in $countries; do
 	ipset="${cc}-blocker"
 	ipv4file="data/$date-$cc-ipv4.txt"
@@ -51,7 +55,7 @@ for cc in $countries; do
  	done
  	echo "done (v6)"
 
-	# activate it
+	# activate the rules, here is where the magic of ipset comes in... It ends up being two rules only for many CIDR ranges.
 	iptables  -I INPUT -m set --match-set $ipset  src  -j DROP
 	ip6tables -I INPUT -m set --match-set $ipset6 src  -j DROP
 done
