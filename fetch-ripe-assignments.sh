@@ -3,6 +3,7 @@
 countries=$( cat countries.txt )
 date=$(date --iso-8601)
 
+mkdir -p data
 
 for cc in $countries; do
 	outfile="data/$date-$cc.json"
