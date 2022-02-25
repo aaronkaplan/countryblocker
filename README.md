@@ -17,6 +17,10 @@ In addition, these filter lists are very easily circumvented by a knowledgable a
 
 Nevertheless, there might be use-cases where this script might be helpful. The good news is: it's so small that you easily adapt.
 
+# Needed tools
+
+ - iprange (Debian packet iprange: optimizing ipsets for iptables)
+ - jq (Debian packet jq: lightweight and flexible command-line JSON processor)
 
 # How to use this?
 

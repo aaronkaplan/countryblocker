@@ -6,6 +6,7 @@ date=$(date --iso-8601)
 
 echo "making backup of iptables..."
 # you can always restore your rules via iptables-restore in case something goes wrong...
+mkdir -p backups
 iptables-save > backups/$date-iptables.save
 
 # note: you first have to have called ./fetch-ripe-assignments.sh

@@ -4,7 +4,9 @@ countries=$( cat countries.txt )
 date=$(date --iso-8601)
 
 
+
 echo "making backup of iptables..."
+mkdir -p backups
 iptables-save > backups/$date-iptables.save
 
 # for IPv4 only so far....
