@@ -17,7 +17,7 @@ for cc in $countries; do
 	ipv4file="data/$date-$cc-ipv4.txt"
 
 	ipset destroy $ipset
-	ipset create $ipset hash:net
+	ipset create $ipset hash:net counters
 
 	# ################### IPv4
 	echo "Installing new netblock rules for country $cc."
@@ -40,7 +40,7 @@ for cc in $countries; do
 	ipv6file="data/$date-$cc-ipv6.txt"
  
 	ipset destroy $ipset6
-	ipset create $ipset6 hash:net family inet6
+	ipset create $ipset6 hash:net family inet6 counters
  
  	echo 
  	echo "(IPv6)"
