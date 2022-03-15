@@ -34,3 +34,19 @@ Next, fetch the IP ranges from RIPE stat: ``fetch-ripe-assignments.sh``
 Third, insert them into iptables via ipset: ``install-rules-ipset.sh``
 
 
+# Debian environment
+
+A debian installation uses rules in /etc/iptables/. The directory debian/ provides some files to be placed into /etc/iptables/ with an additional directory named countryblocker containing the this software.
+
+A Makefile provides the management and control of several task.
+Calling "make help" shows a summary about pathes and usable targets.
+
+To setup the environment as prerequisite package ``netfilter-persistent`` and ``m4`` should be already installed.
+
+The files ``rules.v4`` and ``rules.v6`` are derived from the M4 macro templates ``rules.v4.m4`` and ``rules.v6.m4`` which are
+provided as samples. You have to adapt these to meet your environment and service portfolio.
+The M4 templates refer to rule snippets called ``add.v4``, ``head.v4`` and ``add.v6``, ``head.v6`` created by script ``gen-rules.sh`` (to be called regularly by cron) which is expected to reside in sub-directory ``countryblocker`` (in company with the remainder of this package).
+
+Optional one might create IPtable statistics (daily, weekly or whatever interval is considered as useful) using `make cron.stats` (in short described in make help). The history is stored in the sub-directory ``statistics`` with files named according to the pattern ``iptables-stats.YYYY-MM-DD`` containing the packet and byte counters of all rules.
+
+
