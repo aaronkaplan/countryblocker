@@ -1,0 +1,6 @@
+
+/sbin/service netfilter-persistent reload
+iptables-save >REV/rules.v4.last
+ip6tables-save >REV/rules.v6.last
+
+
