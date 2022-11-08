@@ -48,7 +48,7 @@ help:
 #
 # To enable IPv6 statistic output uncomment set the IP6 variable in Makefile!
 #
-# Pathes and files:
+# Paths and files:
 # 	REV/	dated rule history
 # 	statistics/
 # 		dated statistic output (see cron.stats target)
