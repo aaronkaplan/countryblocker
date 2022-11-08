@@ -39,7 +39,7 @@ Third, insert them into iptables via ipset: ``install-rules-ipset.sh``
 A debian installation uses rules in /etc/iptables/. The directory debian/ provides some files to be placed into /etc/iptables/ with an additional directory named countryblocker containing the this software.
 
 A Makefile provides the management and control of several task.
-Calling "make help" shows a summary about pathes and usable targets.
+Calling "make help" shows a summary about paths and usable targets.
 
 To setup the environment as prerequisite package ``netfilter-persistent`` and ``m4`` should be already installed.
 
