@@ -8,6 +8,7 @@ echo "making backup of iptables..."
 # you can always restore your rules via iptables-restore in case something goes wrong...
 mkdir -p backups
 iptables-save > backups/$date-iptables.save
+xz  backups/$date-iptables.save
 
 # note: you first have to have called ./fetch-ripe-assignments.sh
 # this creates the data/*.txt files with lists of CIDR ranges.
@@ -63,4 +64,25 @@ done
 
 
 
+## Now do the extra-ranges.txt
+
+ipset="extra-blocker"
+ipset destroy $ipset
+ipset create $ipset hash:net counters
+ipv4file="extra-ranges.txt"
+
+echo "Installing new netblock rules for all extra ranges"
+echo "=================================================="
+echo "(IPv4)"
+echo 
+let i=0
+for netblock in $(cat $ipv4file | sort | uniq |   iprange --optimize ); do
+	ipset -exist add $ipset $netblock
+	result=$((i++ % 100))
+	if [ $result -eq 0 ]; then	
+		echo -n "."
+	fi
+done
+iptables  -I INPUT -m set --match-set $ipset  src  -j DROP
+echo "Done (v4)"
 

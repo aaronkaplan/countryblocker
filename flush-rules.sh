@@ -6,6 +6,14 @@ date=$(date --iso-8601)
 
 echo "flushing country block list rules..."
 
+# flush ipset rules
+
+
+for cc in $countries; do 
+	 ipset="${cc}-blocker"
+	ipset destroy $ipset
+done
+
 # for IPv4 only so far....
 for cc in $countries; do
 	table="${cc}-blocker"
