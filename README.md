@@ -19,8 +19,11 @@ Nevertheless, there might be use-cases where this script might be helpful. The g
 
 # Needed tools
 
- - iprange (Debian packet iprange: optimizing ipsets for iptables)
- - jq (Debian packet jq: lightweight and flexible command-line JSON processor)
+ - bzip2 (Debian package bzip2: high-quality block-sorting file compressor - utilities)
+ - jq (Debian package jq: lightweight and flexible command-line JSON processor)
+ - iprange (Debian package iprange: optimizing ipsets for iptables)
+ - ipset (Debian package ipset: administration tool for kernel IP sets)
+   (optional for install-rules-ipset.sh)
 
 # How to use this?
 
