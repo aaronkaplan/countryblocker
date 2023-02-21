@@ -25,6 +25,10 @@ Nevertheless, there might be use-cases where this script might be helpful. The g
  - ipset (Debian package ipset: administration tool for kernel IP sets)
    (optional for install-rules-ipset.sh)
 
+```bash
+sudo apt install bzip2 jq iprange ipset
+```
+
 # How to use this?
 
 Put it into a crontab script!
