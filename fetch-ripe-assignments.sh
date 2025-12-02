@@ -11,7 +11,7 @@ for cc in $countries; do
 	ipv6file="data/$date-$cc-ipv6.txt"
 	asnfile="data/$date-$cc-asn.txt"
 
-	curl "https://stat.ripe.net/data/country-resource-list/data.json?resource=$cc"  > $outfile
+	curl "https://stat.ripe.net/data/country-resource-list/data.json?resource=$cc&v4_format=prefix"  > $outfile
 	jq -r '.data.resources.ipv4[]'  < $outfile > $ipv4file
 	jq -r '.data.resources.ipv6[]'  < $outfile > $ipv6file
 	jq -r '.data.resources.asn[]'   < $outfile > $asnfile
